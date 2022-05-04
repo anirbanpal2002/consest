@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() => runApp(const MyApp());
 
@@ -22,11 +21,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyCustomForm extends StatelessWidget {
+class MyCustomForm extends StatefulWidget {
+  @override
+  State<MyCustomForm> createState() => _MyCustomFormState();
+}
+
+class _MyCustomFormState extends State<MyCustomForm> {
   TextEditingController myController = TextEditingController();
+
   TextEditingController myController1 = TextEditingController();
+
   TextEditingController myController2 = TextEditingController();
+
   String encrypt = "";
+
   void encryption(String? message, int key) {
     //String? message;
     //int key;
@@ -209,8 +217,10 @@ class MyCustomForm extends StatelessWidget {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  encryption(myController.value.text,
-                      int.parse(myController1.value.text));
+                  setState(() {
+                    encryption(myController.value.text,
+                        int.parse(myController1.value.text));
+                  });
                 },
                 child: const Text(
                   'Encrypt',
