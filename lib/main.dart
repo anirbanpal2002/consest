@@ -33,11 +33,8 @@ class MyCustomForm extends StatefulWidget {
 
 class _MyCustomFormState extends State<MyCustomForm> {
   TextEditingController myController = TextEditingController();
-
   TextEditingController myController1 = TextEditingController();
-
   TextEditingController myController2 = TextEditingController();
-
   String? encrypt = "";
 
   @override
