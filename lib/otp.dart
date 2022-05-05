@@ -4,7 +4,6 @@ class OTP {
   void encryption() {
     String message =
         "Department Of Computer Science and Engineering, Techno International New Town";
-
     String key = "";
     final _random = Random();
     int next(int min, int max) => min + _random.nextInt(max - min);

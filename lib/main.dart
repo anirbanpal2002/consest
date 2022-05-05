@@ -31,7 +31,7 @@ class MyCustomForm extends StatefulWidget {
   State<MyCustomForm> createState() => _MyCustomFormState();
 }
 
-class _MyCustomFormState extends State<MyCustomForm> {
+class _MyCustomFormState extends State<MyCustomForm> with Ceaser {
   TextEditingController myController = TextEditingController();
   TextEditingController myController1 = TextEditingController();
   TextEditingController myController2 = TextEditingController();
@@ -96,7 +96,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                     ElevatedButton(
                       onPressed: () {
                         setState(() {
-                          encrypt = Ceaser().encryption(myController.value.text,
+                          encrypt = encryption(myController.value.text,
                               int.parse(myController1.value.text));
                         });
                       },
