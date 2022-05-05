@@ -1,4 +1,3 @@
-
 class Ceaser {
   String? encrypt = "";
   String? encryption(String? message, int key) {

@@ -69,7 +69,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextFormField(
                   controller: myController,
                   decoration: const InputDecoration(
