@@ -36,77 +36,79 @@ class _CeaserTestState extends State<CeaserTest> with Ceaser {
     });
     return SafeArea(
       child: Scaffold(
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) {
-              if (index == 0) {
-                Navigator.pop(context);
-              }
-            },
-            items: const [
-              BottomNavigationBarItem(
-                label: "Encoder",
-                icon: FaIcon(FontAwesomeIcons.keycdn),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (index) {
+            if (index == 0) {
+              Navigator.pop(context);
+            }
+          },
+          items: const [
+            BottomNavigationBarItem(
+              label: "Encoder",
+              icon: FaIcon(FontAwesomeIcons.keycdn),
+            ),
+            BottomNavigationBarItem(
+              label: "TestCase",
+              icon: FaIcon(FontAwesomeIcons.clipboardQuestion),
+            ),
+          ],
+          currentIndex: 1,
+        ),
+        appBar: AppBar(
+          title: Text("Test Case " + testCaseNumber.toString() + "/5"),
+        ),
+        body: Form(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                "Key : " + key.toString(),
+                overflow: TextOverflow.visible,
               ),
-              BottomNavigationBarItem(
-                label: "TestCase",
-                icon: FaIcon(FontAwesomeIcons.clipboardQuestion),
+              Text("Encrypted Message : " + encrypted,
+                  overflow: TextOverflow.clip),
+              TextFormField(
+                controller: _textEditingController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter Decrypted Message',
+                ),
+              ),
+              ElevatedButton(
+                onPressed: (success)
+                    ? null
+                    : () {
+                        setState(() {
+                          if (testCaseNumber == 1) {
+                            if (_textEditingController.value.text
+                                    .toUpperCase() ==
+                                "Hello".toUpperCase()) {
+                              success = true;
+                            }
+                          } else if (testCaseNumber == 2) {
+                          } else if (testCaseNumber == 3) {
+                          } else if (testCaseNumber == 4) {
+                          } else if (testCaseNumber == 5) {}
+                        });
+                      },
+                child: const Text(
+                  'Submit',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+              FaIcon(
+                (success) ? FontAwesomeIcons.check : FontAwesomeIcons.xmark,
+                color: (success) ? Colors.green : Colors.red,
+                size: 40.0,
               ),
             ],
-            currentIndex: 1,
           ),
-          appBar: AppBar(
-              title: Text("Test Case " + testCaseNumber.toString() + "/5")),
-          body: Form(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  "Key : " + key.toString(),
-                  overflow: TextOverflow.visible,
-                ),
-                Text("Encrypted Message : " + encrypted,
-                    overflow: TextOverflow.clip),
-                TextFormField(
-                  controller: _textEditingController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter Decrypted Message',
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: (success)
-                      ? null
-                      : () {
-                          setState(() {
-                            if (testCaseNumber == 1) {
-                              if (_textEditingController.value.text
-                                      .toUpperCase() ==
-                                  "Hello".toUpperCase()) {
-                                success = true;
-                              }
-                            } else if (testCaseNumber == 2) {
-                            } else if (testCaseNumber == 3) {
-                            } else if (testCaseNumber == 4) {
-                            } else if (testCaseNumber == 5) {}
-                          });
-                        },
-                  child: const Text(
-                    'Submit',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25,
-                    ),
-                  ),
-                ),
-                FaIcon(
-                  (success) ? FontAwesomeIcons.check : FontAwesomeIcons.xmark,
-                  color: (success) ? Colors.green : Colors.red,
-                  size: 40.0,
-                ),
-              ],
-            ),
-          )),
+        ),
+      ),
     );
   }
 }
