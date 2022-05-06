@@ -1,6 +1,5 @@
 import 'package:consest/ceaser.dart';
 import 'package:consest/ceaserTest.dart';
-import 'package:consest/otp.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -32,7 +31,7 @@ class MyCustomForm extends StatefulWidget {
   State<MyCustomForm> createState() => _MyCustomFormState();
 }
 
-class _MyCustomFormState extends State<MyCustomForm> with OTP {
+class _MyCustomFormState extends State<MyCustomForm> with Ceaser {
   TextEditingController myController = TextEditingController();
   TextEditingController myController1 = TextEditingController();
   TextEditingController myController2 = TextEditingController();
@@ -77,32 +76,14 @@ class _MyCustomFormState extends State<MyCustomForm> with OTP {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Ganerate key',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: TextField(
-                    controller: myController,
+                  child: TextFormField(
+                    controller: myController1,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'KEY',
+                      hintText: 'Enter key',
                     ),
                   ),
                 ),
@@ -115,8 +96,8 @@ class _MyCustomFormState extends State<MyCustomForm> with OTP {
                     ElevatedButton(
                       onPressed: () {
                         setState(() {
-                          //encrypt = encryption(myController.value.text,
-                          //    int.parse(myController1.value.text));
+                          encrypt = encryption(myController.value.text,
+                              int.parse(myController1.value.text));
                         });
                       },
                       child: const Text(
