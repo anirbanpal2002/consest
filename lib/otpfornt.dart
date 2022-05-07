@@ -59,29 +59,38 @@ class _OtpFontState extends State<OtpFont> with OTP {
                 const SizedBox(
                   height: 10,
                 ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        key = generateKey(myController.value.text);
-                      });
-                    },
-                    child: const Text(
-                      'Generate key',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 16),
+                      child: Center(
+                        child: Text(
+                          key,
+                          overflow: TextOverflow.visible,
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: Center(child: Text(key)),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          key = generateKey(myController.value.text);
+                        });
+                      },
+                      child: const Text(
+                        'Generate key',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 10,
