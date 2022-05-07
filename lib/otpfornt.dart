@@ -1,4 +1,3 @@
-import 'package:consest/ceaser.dart';
 import 'package:consest/ceaserTest.dart';
 import 'package:consest/otp.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,8 @@ class _OtpFontState extends State<OtpFont> with OTP {
   TextEditingController myController = TextEditingController();
   //TextEditingController myController1 = TextEditingController();
   //TextEditingController myController2 = TextEditingController();
-  String? encrypt = "";
+  String encrypt = "";
+  String key = "";
 
   @override
   Widget build(BuildContext context) {
@@ -63,11 +63,11 @@ class _OtpFontState extends State<OtpFont> with OTP {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        generateKey(myController.valuetext);
+                        key = generateKey(myController.value.text);
                       });
                     },
                     child: const Text(
-                      'GENARATE key',
+                      'Generate key',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 25,
@@ -81,7 +81,7 @@ class _OtpFontState extends State<OtpFont> with OTP {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: Center(child: Text("key")),
+                  child: Center(child: Text(key)),
                 ),
                 const SizedBox(
                   height: 10,
@@ -92,8 +92,7 @@ class _OtpFontState extends State<OtpFont> with OTP {
                     ElevatedButton(
                       onPressed: () {
                         setState(() {
-                          //encrypt = encryption(myController.value.text,
-                          //    int.parse(myController1.value.text));
+                          encrypt = encryption(myController.value.text, key);
                         });
                       },
                       child: const Text(
@@ -109,7 +108,7 @@ class _OtpFontState extends State<OtpFont> with OTP {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: Text(encrypt!),
+                  child: Text(encrypt),
                   /*TextFormField(
                   controller: myController2,
                   decoration: const InputDecoration(

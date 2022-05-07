@@ -11,7 +11,7 @@ class OTP {
     return key;
   }
 
-  void encryption(String message, String key) {
+  String encryption(String message, String key) {
     // String message =
     //     "Department Of Computer Science and Engineering, Techno International New Town";
     //String key = "";
@@ -42,7 +42,7 @@ class OTP {
       }
       pos = pos + 1;
     }
-    //print(encrypt);
+    return encrypt;
   }
 
   String findEncrypt(int code) {
