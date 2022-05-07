@@ -1,6 +1,7 @@
 import 'package:consest/ceaser.dart';
 import 'package:consest/ceaserTest.dart';
 import 'package:consest/otp.dart';
+import 'package:consest/otpfornt.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -19,12 +20,13 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text(appTitle),
         ),
-        body: const MyCustomForm(),
+        body: const OtpFont(),
       ),
     );
   }
 }
 
+/*
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({Key? key}) : super(key: key);
 
@@ -133,13 +135,15 @@ class _MyCustomFormState extends State<MyCustomForm> with OTP {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                   child: Text(encrypt!),
-                  /*TextFormField(
+                  */
+/*TextFormField(
                   controller: myController2,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'out put',
                   ),
-                ),*/
+                ),*/ /*
+
                 ),
               ],
             ),
@@ -149,3 +153,4 @@ class _MyCustomFormState extends State<MyCustomForm> with OTP {
     );
   }
 }
+*/

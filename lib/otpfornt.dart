@@ -4,38 +4,17 @@ import 'package:consest/otp.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class OtpFont extends StatefulWidget {
+  const OtpFont({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    const appTitle = 'CONTEST';
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        body: const MyCustomForm(),
-      ),
-    );
-  }
+  State<OtpFont> createState() => _OtpFontState();
 }
 
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({Key? key}) : super(key: key);
-
-  @override
-  State<MyCustomForm> createState() => _MyCustomFormState();
-}
-
-class _MyCustomFormState extends State<MyCustomForm> with OTP {
+class _OtpFontState extends State<OtpFont> with OTP {
   TextEditingController myController = TextEditingController();
-  TextEditingController myController1 = TextEditingController();
-  TextEditingController myController2 = TextEditingController();
+  //TextEditingController myController1 = TextEditingController();
+  //TextEditingController myController2 = TextEditingController();
   String? encrypt = "";
 
   @override
@@ -82,9 +61,13 @@ class _MyCustomFormState extends State<MyCustomForm> with OTP {
                 ),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        generateKey(myController.valuetext);
+                      });
+                    },
                     child: const Text(
-                      'Ganerate key',
+                      'GENARATE key',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 25,
@@ -98,13 +81,7 @@ class _MyCustomFormState extends State<MyCustomForm> with OTP {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: TextField(
-                    controller: myController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'KEY',
-                    ),
-                  ),
+                  child: Center(child: Text("key")),
                 ),
                 const SizedBox(
                   height: 10,

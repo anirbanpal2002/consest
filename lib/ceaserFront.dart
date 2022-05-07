@@ -3,35 +3,14 @@ import 'package:consest/ceaserTest.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class CeaserFont extends StatefulWidget {
+  const CeaserFont({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    const appTitle = 'CONTEST';
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        body: const MyCustomForm(),
-      ),
-    );
-  }
+  State<CeaserFont> createState() => _CeaserFontState();
 }
 
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({Key? key}) : super(key: key);
-
-  @override
-  State<MyCustomForm> createState() => _MyCustomFormState();
-}
-
-class _MyCustomFormState extends State<MyCustomForm> with Ceaser {
+class _CeaserFontState extends State<CeaserFont> with Ceaser {
   TextEditingController myController = TextEditingController();
   TextEditingController myController1 = TextEditingController();
   TextEditingController myController2 = TextEditingController();

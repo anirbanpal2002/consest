@@ -1,15 +1,21 @@
 import 'dart:math';
 
 class OTP {
-  void encryption(String message, String key) {
-    // String message =
-    //     "Department Of Computer Science and Engineering, Techno International New Town";
-    //String key = "";
+  String generateKey(String message) {
     final _random = Random();
+    String key = "";
     int next(int min, int max) => min + _random.nextInt(max - min);
     for (int i = 0; i < message.length; i++) {
       key = key + findEncrypt(next(1, 26));
     }
+    return key;
+  }
+
+  void encryption(String message, String key) {
+    // String message =
+    //     "Department Of Computer Science and Engineering, Techno International New Town";
+    //String key = "";
+
     //print(key);
     String encrypt = "";
     message = message.toUpperCase();
@@ -36,7 +42,7 @@ class OTP {
       }
       pos = pos + 1;
     }
-    print(encrypt);
+    //print(encrypt);
   }
 
   String findEncrypt(int code) {
