@@ -52,7 +52,6 @@ class _OtpFontState extends State<OtpFont> with OTP {
                     controller: myController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: "Enter the message",
                       hintText: 'Enter a Text',
                     ),
                   ),
@@ -64,7 +63,6 @@ class _OtpFontState extends State<OtpFont> with OTP {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Text("Key: "),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 16),

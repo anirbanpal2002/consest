@@ -2,6 +2,7 @@ import 'package:consest/ceaser.dart';
 import 'package:consest/ceaserTest.dart';
 import 'package:consest/otp.dart';
 import 'package:consest/otpfornt.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -14,143 +15,58 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const appTitle = 'CONTEST';
     return MaterialApp(
+      home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        body: const OtpFont(),
-      ),
     );
   }
 }
 
-/*
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyCustomForm> createState() => _MyCustomFormState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _MyCustomFormState extends State<MyCustomForm> with OTP {
-  TextEditingController myController = TextEditingController();
-  TextEditingController myController1 = TextEditingController();
-  TextEditingController myController2 = TextEditingController();
-  String? encrypt = "";
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
-          if (index == 1) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const CeaserTest()));
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            label: "Encoder",
-            icon: FaIcon(FontAwesomeIcons.keycdn),
-          ),
-          BottomNavigationBarItem(
-            label: "TestCase",
-            icon: FaIcon(FontAwesomeIcons.clipboardQuestion),
-          ),
-        ],
-        currentIndex: 0,
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Form(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.deepPurpleAccent.shade700,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(children: [
+            Stack(
+              overflow: Overflow.visible,
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: TextFormField(
-                    controller: myController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter a Text',
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Ganerate key',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
+                Container(
+                  width: 298,
+                  height: 390,
+                  decoration: const BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black45,
+                          offset: Offset(0, 20),
+                          blurRadius: 30,
+                          spreadRadius: 0,
+                        )
+                      ],
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(200),
+                        bottomLeft: Radius.circular(200),
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: TextField(
-                    controller: myController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'KEY',
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          //encrypt = encryption(myController.value.text,
-                          //    int.parse(myController1.value.text));
-                        });
-                      },
-                      child: const Text(
-                        'Encrypt',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: Text(encrypt!),
-                  */
-/*TextFormField(
-                  controller: myController2,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'out put',
-                  ),
-                ),*/ /*
-
+                      image: DecorationImage(
+                        image: AssetImage('assets/conpic.jpg'),
+                        fit: BoxFit.cover,
+                      )),
                 ),
               ],
             ),
-          ),
+          ]),
         ),
       ),
     );
   }
 }
-*/
