@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.deepPurpleAccent.shade700,
+      backgroundColor: Colors.lightBlueAccent.shade700,
       body: SizedBox(
         width: double.infinity,
         child: Column(children: [
@@ -58,6 +58,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(200),
                       bottomLeft: Radius.circular(200),
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
                     ),
                     image: DecorationImage(
                       image: AssetImage('assets/conpic.jpg'),
@@ -70,48 +72,60 @@ class _SplashScreenState extends State<SplashScreen> {
             height: 20,
           ),
           Text(
-            "PRESENTS ",
+            "PRESENTS D'DCODE",
             style: TextStyle(
               fontSize: 30,
-              color: Colors.redAccent,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 35,
           ),
-          Text(
-            "D'DCODE",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.redAccent,
-              fontWeight: FontWeight.bold,
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                primary: Colors.deepPurpleAccent.shade700,
+                side: BorderSide(width: 1, color: Colors.black),
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                padding: EdgeInsets.all(20)),
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => CeaserFont()));
+            },
+            child: const Text(
+              'LET,S START',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           SizedBox(
-            height: 103,
+            height: 83,
           ),
           Column(children: [
             Stack(
               overflow: Overflow.visible,
               children: [
                 Container(
-                  width: 210,
-                  height: 240,
+                  width: 180,
+                  height: 200,
                   decoration: const BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black45,
-                          offset: Offset(0, 20),
-                          blurRadius: 20,
+                          offset: Offset(0, 3),
+                          blurRadius: 30,
                           spreadRadius: 0,
                         )
                       ],
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(200),
                         topRight: Radius.circular(200),
-                        bottomRight: Radius.circular(0),
-                        bottomLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(100),
+                        bottomLeft: Radius.circular(100),
                       ),
                       image: DecorationImage(
                         image: AssetImage('assets/TINT.jpg'),
@@ -124,14 +138,5 @@ class _SplashScreenState extends State<SplashScreen> {
         ]),
       ),
     );
-  }
-
-  @override
-  void iniState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 4),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => CeaserFont())));
   }
 }
