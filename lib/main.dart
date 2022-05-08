@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:consest/ceaser.dart';
+import 'package:consest/ceaserFront.dart';
 import 'package:consest/ceaserTest.dart';
 import 'package:consest/otp.dart';
 import 'package:consest/otpfornt.dart';
@@ -64,9 +67,31 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "PRESENTS ",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+              ),
+            )
           ]),
         ),
       ),
     );
+  }
+
+  @override
+  void iniState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 4),
+        () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CeaserFont()),
+            ));
   }
 }
