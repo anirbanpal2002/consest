@@ -37,49 +37,91 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.deepPurpleAccent.shade700,
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(children: [
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(children: [
+          Stack(
+            overflow: Overflow.visible,
+            children: [
+              Container(
+                width: 230,
+                height: 240,
+                decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black45,
+                        offset: Offset(0, 20),
+                        blurRadius: 30,
+                        spreadRadius: 0,
+                      )
+                    ],
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(200),
+                      bottomLeft: Radius.circular(200),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage('assets/conpic.jpg'),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            "PRESENTS ",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.redAccent,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "D'DCODE",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.redAccent,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 103,
+          ),
+          Column(children: [
             Stack(
               overflow: Overflow.visible,
               children: [
                 Container(
-                  width: 298,
-                  height: 390,
+                  width: 210,
+                  height: 240,
                   decoration: const BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black45,
                           offset: Offset(0, 20),
-                          blurRadius: 30,
+                          blurRadius: 20,
                           spreadRadius: 0,
                         )
                       ],
                       borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(200),
-                        bottomLeft: Radius.circular(200),
+                        topLeft: Radius.circular(200),
+                        topRight: Radius.circular(200),
+                        bottomRight: Radius.circular(0),
+                        bottomLeft: Radius.circular(0),
                       ),
                       image: DecorationImage(
-                        image: AssetImage('assets/conpic.jpg'),
+                        image: AssetImage('assets/TINT.jpg'),
                         fit: BoxFit.cover,
                       )),
                 ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "PRESENTS ",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.redAccent,
-                fontWeight: FontWeight.bold,
-              ),
-            )
           ]),
-        ),
+        ]),
       ),
     );
   }
@@ -89,7 +131,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
         Duration(seconds: 4),
-        () => Navigator.push(
+        () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => CeaserFont())));
   }
 }
