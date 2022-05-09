@@ -5,6 +5,7 @@ import 'package:consest/ceaserFront.dart';
 import 'package:consest/ceaserTest.dart';
 import 'package:consest/otp.dart';
 import 'package:consest/otpfornt.dart';
+import 'package:consest/sample.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -87,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => CeaserFont()));
+                      MaterialPageRoute(builder: (context) => sample()));
                 },
                 label: Text('LETS START', style: TextStyle(fontSize: 20)),
                 icon: Icon(Icons.play_arrow),

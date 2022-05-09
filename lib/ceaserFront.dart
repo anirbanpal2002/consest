@@ -19,6 +19,16 @@ class _CeaserFontState extends State<CeaserFont> with Ceaser {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+            child: const Text(
+          'SAMPLE',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.white,
+          ),
+        )),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
           if (index == 1) {
