@@ -18,104 +18,112 @@ class _CeaserFontState extends State<CeaserFont> with Ceaser {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: const Text(
-          'SAMPLE',
-          style: TextStyle(
-            fontSize: 30,
-            color: Colors.white,
+    return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/ca.jpg'), fit: BoxFit.cover),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Center(
+                child: const Text(
+              'SAMPLE',
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+              ),
+            )),
           ),
-        )),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
-          if (index == 1) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const CeaserTest()));
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            label: "Encoder",
-            icon: FaIcon(FontAwesomeIcons.keycdn),
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (index) {
+              if (index == 1) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CeaserTest()));
+              }
+            },
+            items: const [
+              BottomNavigationBarItem(
+                label: "Encoder",
+                icon: FaIcon(FontAwesomeIcons.keycdn),
+              ),
+              BottomNavigationBarItem(
+                label: "TestCase",
+                icon: FaIcon(FontAwesomeIcons.clipboardQuestion),
+              ),
+            ],
+            currentIndex: 0,
           ),
-          BottomNavigationBarItem(
-            label: "TestCase",
-            icon: FaIcon(FontAwesomeIcons.clipboardQuestion),
-          ),
-        ],
-        currentIndex: 0,
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Form(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: TextFormField(
-                    controller: myController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter a Text',
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: TextFormField(
-                    controller: myController1,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter key',
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Form(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          encrypt = encryption(myController.value.text,
-                              int.parse(myController1.value.text));
-                        });
-                      },
-                      child: const Text(
-                        'Encrypt',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 16),
+                      child: TextFormField(
+                        controller: myController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter a Text',
                         ),
                       ),
                     ),
-                  ],
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: Text(encrypt!),
-                  /*TextFormField(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 16),
+                      child: TextFormField(
+                        controller: myController1,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter key',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              encrypt = encryption(myController.value.text,
+                                  int.parse(myController1.value.text));
+                            });
+                          },
+                          child: const Text(
+                            'Encrypt',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 16),
+                      child: Text(encrypt!),
+                      /*TextFormField(
                   controller: myController2,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'out put',
                   ),
                 ),*/
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
