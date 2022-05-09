@@ -23,7 +23,7 @@ class _OtpFontState extends State<OtpFont> with OTP {
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/ca.jpg'), fit: BoxFit.cover),
+              image: AssetImage('assets/otpfont.jpg'), fit: BoxFit.cover),
         ),
         child: Scaffold(
           appBar: AppBar(
@@ -39,6 +39,8 @@ class _OtpFontState extends State<OtpFont> with OTP {
           ),
           backgroundColor: Colors.transparent,
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.lightBlueAccent.shade100,
+            iconSize: 40,
             onTap: (index) {
               if (index == 1) {
                 Navigator.push(
@@ -50,11 +52,15 @@ class _OtpFontState extends State<OtpFont> with OTP {
             items: const [
               BottomNavigationBarItem(
                 label: "Encoder",
-                icon: FaIcon(FontAwesomeIcons.keycdn),
+                icon: FaIcon(FontAwesomeIcons.keycdn,
+                    color: Colors.deepPurpleAccent),
               ),
               BottomNavigationBarItem(
                 label: "TestCase",
-                icon: FaIcon(FontAwesomeIcons.clipboardQuestion),
+                icon: FaIcon(
+                  FontAwesomeIcons.clipboardQuestion,
+                  color: Colors.deepPurpleAccent,
+                ),
               ),
             ],
             currentIndex: 0,
@@ -74,7 +80,7 @@ class _OtpFontState extends State<OtpFont> with OTP {
                           decoration: const InputDecoration(
                             fillColor: Colors.white,
                             filled: true,
-                            hintText: 'Enter a Text',
+                            hintText: "ENTER A TEXT",
                             border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(100))),
@@ -87,62 +93,78 @@ class _OtpFontState extends State<OtpFont> with OTP {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 16),
-                          child: Center(
-                            child: Text(
-                              key,
-                              overflow: TextOverflow.visible,
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.green,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              key = generateKey(myController.value.text);
-                            });
-                          },
-                          child: const Text(
-                            'Generate key',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              encrypt =
-                                  encryption(myController.value.text, key);
-                            });
-                          },
-                          child: const Text(
-                            'Encrypt',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                          ),
-                        ),
+                        Container(
+                            margin: const EdgeInsets.all(7),
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                setState(() {
+                                  key = generateKey(myController.value.text);
+                                });
+                              },
+                              icon: Icon(Icons.arrow_forward),
+                              label: Text('GENARATE',
+                                  style: TextStyle(fontSize: 20)),
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)),
+                                primary: Colors.green,
+                                padding: EdgeInsets.all(16),
+                              ),
+                            )),
                       ],
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 16),
-                      child: Text(encrypt),
+                      child: Center(
+                        child: Text(
+                          key,
+                          overflow: TextOverflow.visible,
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.red.shade700,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.all(7),
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                setState(() {
+                                  encrypt =
+                                      encryption(myController.value.text, key);
+                                });
+                              },
+                              icon: Icon(Icons.arrow_forward),
+                              label: Text('ENCRYPT',
+                                  style: TextStyle(fontSize: 20)),
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)),
+                                primary: Colors.green,
+                                padding: EdgeInsets.all(16),
+                              ),
+                            )),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 16),
+                      child: Center(
+                        child: Text(encrypt,
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.pink,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
                       /*TextFormField(
                   controller: myController2,
                   decoration: const InputDecoration(
@@ -151,6 +173,25 @@ class _OtpFontState extends State<OtpFont> with OTP {
                   ),
                 ),*/
                     ),
+                    /*Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 16),
+                      child: Center(
+                        child: Text(encrypt,
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.pink,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                      */ /*TextFormField(
+                  controller: myController2,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'out put',
+                  ),
+                ),*/ /*
+                    ),*/
                   ],
                 ),
               ),

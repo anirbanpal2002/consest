@@ -68,6 +68,8 @@ class _CeaserFontState extends State<CeaserFont> with Ceaser {
                       child: TextFormField(
                         controller: myController,
                         decoration: const InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
                           border: OutlineInputBorder(),
                           hintText: 'Enter a Text',
                         ),
