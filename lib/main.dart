@@ -82,26 +82,22 @@ class _SplashScreenState extends State<SplashScreen> {
           SizedBox(
             height: 35,
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurpleAccent.shade700,
-                side: BorderSide(width: 1, color: Colors.black),
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                padding: EdgeInsets.all(20)),
-            onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => CeaserFont()));
-            },
-            child: const Text(
-              'LET,S START',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
+          Container(
+              margin: const EdgeInsets.all(7),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => CeaserFont()));
+                },
+                label: Text('LETS START', style: TextStyle(fontSize: 20)),
+                icon: Icon(Icons.play_arrow),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  primary: Colors.pink,
+                  padding: EdgeInsets.all(16),
+                ),
+              )),
           SizedBox(
             height: 83,
           ),
